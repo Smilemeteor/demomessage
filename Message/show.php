@@ -19,7 +19,7 @@ foreach ($res as $key => $value) {
 </head>
 <body>
   <h4>留言板</h4><hr>
-  <a href='add.php'><input type='submit' value='写留言'></a><hr>
+  <a href='http://demo.message.com/Message.php?act=add'><input type='submit' value='写留言'></a><hr>
   <table width='100%' style='text-align: center;' border='1'>
   <tr>
   <th>编号</th>
