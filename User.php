@@ -1,4 +1,5 @@
 <?php 
+include 'DB.php';
 class User
 {
 	public function login()
@@ -10,7 +11,8 @@ class User
 	{
 		$username = $_POST["username"];
 		$password = $_POST["password"];
-		$pdo = new PDO("mysql:host=127.0.0.1;dbname=test","root","root");
+		$db = new DB;
+		$pdo =$db->pdo();
         $sql = "select username,password from user where username = '$_POST[username]' and password = '$_POST[password]'";
         $result = $pdo->query($sql);
         if ($result) {
@@ -25,7 +27,8 @@ class User
 	}
 	public function register_do()
 	{ 
-		$pdo = new PDO("mysql:host=127.0.0.1;dbname=test","root","root");
+		$db = new DB;
+		$pdo =$db->pdo();
 		$username = $_POST['username'];
 		$password = $_POST['password'];	
 		$sql = "INSERT INTO user (`username`,`password`) VALUES ('$username','$password')";

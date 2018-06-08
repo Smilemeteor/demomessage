@@ -1,14 +1,14 @@
 <?php
-header("content-type:text/html;charset=utf-8");
-$pdo = new PDO("mysql:host=127.0.0.1;dbname=test","root","root");
-$sql = "select * from message";
-$res = $pdo->query($sql)->fetchAll();
-foreach ($res as $key => $value) {
-  $data[$key]['id']=$res[$key]['id'];
-  $data[$key]['title']=$res[$key]['title'];
-  $data[$key]['text']=$res[$key]['text'];
-  $data[$key]['time']=$res[$key]['time'];
-}
+    $db = new DB;
+    $pdo =$db->pdo(); 
+    $sql = "select * from message";
+    $res = $pdo->query($sql)->fetchAll();
+        foreach ($res as $key => $value) {
+        $data[$key]['id']=$res[$key]['id'];
+        $data[$key]['title']=$res[$key]['title'];
+        $data[$key]['text']=$res[$key]['text'];
+        $data[$key]['time']=$res[$key]['time'];
+        }
 ?>
 
 <!DOCTYPE html>
@@ -36,7 +36,7 @@ foreach ($res as $key => $value) {
   <td><?php echo $row['text']; ?></td>
   <td>
     <a href='http://demo.message.com/Message.php?act=delete&&id=<?php echo $row['id'];?>'>删除</a>||
-    <a href='http://demo.message.com/Message.php?act=update&&?id=<?php echo $row['id'];?>'>修改</a>
+    <a href='http://demo.message.com/Message.php?act=update&&id=<?php echo $row['id'];?>'>修改</a>
   </td>
   </tr>
   <?php } ?>

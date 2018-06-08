@@ -1,4 +1,5 @@
 <?php 
+include 'DB.php';
 class Message
 {
 	public function add()
@@ -8,7 +9,8 @@ class Message
 
 	public function add_do()
 	{
-		$pdo = new PDO("mysql:host=127.0.0.1;dbname=test","root","root");
+		$db = new DB;
+		$pdo =$db->pdo();
 		$title = $_POST['title'];
 		$text = $_POST['text'];	
 		$time = time();
@@ -24,11 +26,12 @@ class Message
 	public function show()
 	{
 		include 'Message/show.php';
-	}
+	}	
 
 	public function delete($id)
 	{
-		$pdo = new PDO("mysql:host=127.0.0.1;dbname=test","root","root");
+		$db = new DB;
+		$pdo =$db->pdo();
 		$id = $_GET['id'];
 		$sql = "delete from message where id='$id'";
 		$res = $pdo->query($sql);
@@ -43,6 +46,10 @@ class Message
 	public function update()
 	{
 		include 'Message/update.php';
+	}
+	public function update_do($id)
+	{
+		
 	}
 }
 $Message = new Message;
